@@ -160,7 +160,7 @@ const GameModeVideoPlayer = () => {
         navigate("/game-mode-rocket-video/intro", { replace: true });
       } else if (shouldGoToRocketCompleteAfterVideo) {
         setShouldGoToRocketCompleteAfterVideo(false);
-        navigate("/game-mode-exit", { replace: true });
+        navigate("/game-mode-rocket-complete", { replace: true });
       } else if (shouldExitAfterVideo) {
         setShouldExitAfterVideo(false);
         navigate("/game-mode-exit", { replace: true });

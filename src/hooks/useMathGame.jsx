@@ -2007,6 +2007,19 @@ const showAnswerSymbolFor300ms = useCallback((payload) => {
         setIsGameMode(false);
         setIsAnimating(false);
         setRocketResumeAfterVideo(false);
+        const rocketOptions = generateRandomVideoOptions(
+          rocketVideoList && rocketVideoList.length > 0
+            ? rocketVideoList
+            : ROCKET_VIDEO_FALLBACKS
+        );
+        if (rocketOptions) {
+          setShouldExitAfterVideo(false);
+          setShouldGoToRocketCompleteAfterVideo(true);
+          setVideoOptions(rocketOptions);
+          navigate('/game-mode-video-select', { replace: true });
+          return;
+        }
+
         setShouldExitAfterVideo(false);
         setShouldGoToRocketCompleteAfterVideo(false);
         navigate('/game-mode-rocket-complete', { replace: true });
@@ -2085,6 +2098,16 @@ const showAnswerSymbolFor300ms = useCallback((payload) => {
         setIsGameMode(false);
         setIsAnimating(false);
         setBonusResumeAfterVideo(false);
+        const bonusOptions = generateRandomVideoOptions(
+          bonusVideoList && bonusVideoList.length > 0 ? bonusVideoList : BONUS_VIDEO_FALLBACKS
+        );
+        if (bonusOptions) {
+          setShouldExitAfterVideo(true);
+          setVideoOptions(bonusOptions);
+          navigate('/game-mode-video-select', { replace: true });
+          return;
+        }
+
         setShouldExitAfterVideo(false);
         navigate('/game-mode-exit', { replace: true });
         return;
